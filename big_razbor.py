@@ -1,209 +1,458 @@
 # Типы данных в python
-# Immutable: str, num, frozenset, bool, None, tuple
-# Mutable: list, set, dict
-
-                    # """Numbers"""
-# Numbers предназначены для хранения числовых значений и проведения арифметических вычислений над ними
-# numbers: int, float, decimal, complex, long
-# """int float"""
-# abs(int), abs(float) - vozvrawaet modul chislat, floa
-# pow(num, degree, remainder)
-# divmod(num1, num2) - (num1//num2),(num1%num2)
-
-                    #  """Strings"""
-# str - uporyadichennaya posledovatelnost simvolov v odinarnyh ili 2h kavychkah
-# Sintax: "", '', """"""", '''''' """
-# "hello" * 3 -> "hellohellohello"
-# index - numeraciya simvolov v stroke v uporyadochennoi posledovatelnosti
-# "h e l l o   w o r l d "
-#  0 1 2 3 4 5 6 7 8 9 10
-#                   -2 -1
-# srezy - chast stroki, podstroka   start<end
-# string = 'some string'
-# string[index]
-# string[start, end, step]
-
-                    # """Bool"""
-# logicheskii tip dannyh s dvumya znacheniyami: True False
-
-                    # """List"""
-# izm, uporyad tip danny, kotoryi hranit posledovatelnost elementov. Elementami spiska mogut byt' absolyutno lyubye tipy dannyh, v tom chisle i spiski.
-# list1 = [1, "str", 3.4, (7, 2), ["str", 6]]
-# list2 = list(1, "str", 3.4, (7, 2), ["str", 6])
-# list3 = ["str"]*6 -> ["str", "str","str","str","str","str"]
-# list4 = list(range())
-# range(start, end, step) - funkciya, kotoraya sozdaet posledovztelnost chisel
-# list(range(5)) -> [0, ], 2, 3, 4]
-# list(range(2, 8)) -> [2, 3, 4, 5, 6, 7]
-# list(range(4,8, 2)) -> [4,6]
-# len(obj) - vozvr dlinu obj
+* Immutable - Неизенияемые
+`int`, `float`, `str`, `tuple`, `bool`, `frozenset`, `None`
 
 
-                    # """Tuple"""
-# kortej - neizm uporyad tip dannyh, kotoryi predastavlyaet soboi posledovatelnost elementov. Elementami tuple mogut byt' absolyutno lyubye tipy dannyh, v tom chisle i spiski, i korteji.
-# (1, 2, 3)         1, 2, 3         (3,)
-                    # """Set"""
-# izm neuporyad tip dannyh, kotoryi hranit v sebe tolko unikalnye, neizm znacheniya
-# set(iterable)
-# {True, False, 2, 0, None, ()}
+* Mutable - Изменяемые
+`list`, `dict`, `set`
 
-                    # """Frozenset"""
-# neizm mnojetsvo - neizm neuporyad tip dannyh, kotoryi hranit v sebe tolko unikalnye, neizm znacheniya
-# syntax: frozenset(iterable)
 
-                    # """Dict"""
-# dict - izm, neuporyad tip dannyh, v kotorom hranyatsya pary v vide key:value. Klyuch v slovare - lyuboi neiz tip dannyh. Kajdyi klyuch - unikalnyi. Value - lyuboi tip dannyh
-# Syntax: {"key":"value", 5: ["hello"]}     dict(iterable)
+## Numbers
+> числа - неизменяемый тип данных, предназначенный для хранения числовых значений и проведения над ними арифметических дествий
 
-                    # """None"""
-# neiz tip dannyh, kotoryi ispolzuetsya dlya oboznacheniya pustogo ili otsutstviya znacheniya
+* int -> (целочисленный)
+* float -> (вещественные, дробные, с плавающей точкой)
+* decimal -> (десятичные, но более точные)
+* complex -> (комплексные числа 5+6j-3i)
+* long -> (огромные числа)
+
+```py
+abs(int)
+abs(float)
+```
+> abs -> функция, которая возвращает модуль числа (из отрицательного сделает положительное)
+
+
+* pow(num, degree [, mod]) -> (num**degree) % mod
+* pow(int/float, int/float) -> вернет первое число в степени второго
+* pow(int/float, int/float, int) -> вернет остаток от деления 
+* первого числа в степени второго на третье число
+> функция pow всегда возвращает одно число
+
+```py
+pow(4, 2)
+# 4 ** 2 = 16
+
+pow(2, 3, 4)
+# 2 ** 3 = 8
+# 8 % 4 = 0 (8//4 -> остаток 0)
+```
+
+* divmod(num1, num2) -> (num1 // num2), (num1 % num2)
+> возвращает нам 2 результата в виде tuple
+1. частное этих чисел
+2. остаток от деления этих чисел
+
+
+* round(num [, ndigits])
+* округляет число, если мы передадим второе число, то округлит еще столько символов после точки
+```py
+round(5.6) -> 6 (округляет в большую сторону)
+round(12.048, 2) -> 12.05
+```
 
 
 
 
 
+## Strings
+> строка - неизменяемый тип данных, котрой представляет собой упорядоченную последовательность символов, заключенных в двоийтые или одинарные кавычки
 
-                    # """Conditions"""
-# usloviya - operator, kotoryi pozvolyaet nam vypolnyat ili ne vypolnyat kakoi-to kusochek koda, kotoryi nahoditsya v tele usloviya
-# Synax:
+Синтаксис:
+```py
+str1 = 'hello'
+str2 = "world"
+str3 = '''
+многострочная строка 
+с одинарными кавычками
+'''
+str4 = """
+многострочная строка 
+с двойными кавычками
+"""
 
-# if True:
-#     print("Vse verno")
+str5 = "hello"*3 # -> "hellohellohello"
+str6 = "hello" + " " + "world" # -> "hello world"
+```
 
-# Takje my mojem sozdavat konstrukcii iz uslovnyh operatorov. Esli v pervom if uslovie vydalo True, to vypolnitsya eto uslovie. Esli v pervom if vyidet False, proveritsya telo v elif.
-# Esli vtoroe elif uslovie vydalo False, to vypolnitsya else
+> индексы - нумерация символов в упорядоченной последовательности (индексация начинается с 0)
 
-# if i else v kostrukcii mojet byt ispolzovano 1 raz, elif mnogo.
-# 
+"h e l l o   w o r l d"
+ 0 1 2 3 4 5 6 7 8 9 10
+              ... -2 -1
 
-                    # """Ternarnye usloviya"""
-# usloviya v odnu stroku
-# telo1 if uslovie else telo2
-# print("usl vernoe") if True else print("neverno")
+string = "some string"
+string[index]
 
-
-                    # """Loops"""
-# blok koda, kotoryi budet vypolnyatsya neskolko raz. Kajdyi krug cikla - iteraciya.
-
-# break - insrtukciya, kotoraya nemedlenno preryvaet rabotu cikla.
-# continue - instrukciya, kotoraya perehodir k sleduyushei iteracii
-
-# '''For'''
-# eto cikl, kotoryi proizvodit iteraciyu nad posledovatel'nost'yu(list, dict, set, str, tuple)
-# v cikle for my mojem vypolnyat razlichnye operacii nad kajdym elementom posledovatelnosti.
-# Syntax:
-# for element in posledovatelnost:
-#     kakie-to deistviya
-
-
-# '''while'''
-# while - cikl, kotoryi proizvodit deistviya, poka usloviye budet True
-# Syntax:
-# while uslovie:
-#     kakie-to deistviya
-
-
-# '''Comprehension'''
-# generatory posledovatelnosti - spec konstrukciya, s pomoshyu kotoroi mojno sozdavat posledovatelnosti.
-# Syntax:
-# # deistvie for element in posledovatelnost' if uslovie
-# [x for x in range(1,11) if x%2==0]
-# ["chetnoe" if x%2==0 else "nechetnoe" for x in range(1, 11)]
+> срезы - часть последовательности (подпоследовательность)
+```py
+string = "some string"
+# string[start=0 : end=len(str) : (step=1)]
+string[1:6] -> "ome s" (1,2,3,4,5)
+string[:6] -> "some s" (0,1,2,3,4,5)
+string[5:] -> "string" (5,6,7,8,9,10)
+string[:] -> "some string"
+string[::2] -> "sm tig" (0,2,4,6,8,10)
+string[::-1] -> "gnirts emos" (10,9,8,7,6,5,4,3,2,1,0)
+```
 
 
-# dlya dict compehension v deistvii doljna byt' para (klyuch:znachenie)
-# {x:x**2 for x in range(1,11) if x%2==0}
 
-# init_dict = {"key":"value", "key2":"value2"}
-# res = {v:k for k, v in init_dict.items()}
+## Bool
+> bool - логический тип данных, с двумя значениями, используется в условиях
+* True (правда)
+* False (ложь)
 
-
-                    # """Try-except"""
-# konstrukciya dlya obrabotki isklyuchenii i oshibok
-# Syntax Error ne obrabatyvaetsya
-# Syntax:
-
-
-# try:
-#     kod, kotoryi mojet vu=yzvat oshibku
-# except Isklyuchenie:
-#     kod, kotoryi rabitaet, esli oshibka vyshla.
-# else:
-#     kod, kotoryi rabitaet, esli oshibka ne vyshla
-# finally:
-#     kod, kotoryi rabotaet v lyubom sluchae
+```py
+bool( [3,2,1] ) -> True
+bool( [] ) -> False
+bool( [[]] ) -> True
+```
 
 
-                    # """Funkcii"""
 
-# funkciya - imenovannyi blok koda, vypolnyayushii deistviya i vozvr rezultat. My mojem vyzyvat' funkciyu, obrashayas' k nei po imeni i ispolzuya ().
-# kod, kotoryi napisan vnutri funkcii, budet rabotat' tolko pri vyzove fukcii.
-# Parametry funkcii - eto lokalnye peremennye, kotorym prisvaivaetsya znachenie pri vyzove funkcii.
-# Argumenty funkcii - eto znacheniya, kotoryi my peredaem v parametry funkcii.
-# def - instrukciya, s pomoshyu kotoroi opredelyaetsta funkciya.
-# return - funkciya, s pomoshyu kotoroi funkciya vozvrawet rezultat. Esli ee ne propisat'. vozvrawaet None po defaultu.
+## List
+> списки - изменяемый и упорядоченный тип данных, который хранит в себе последовательность элементов. Элементами списка могут быть любые типы данных, в том числе и списки
 
-# pozicionnye, imenovannye, param s Defaultom, neobyaz args*, klyuchevye aargs**
+```py
+list1 = [1, "str", 3.4, (76,4), ["hello", True]]
+list2 = list( (1,2,3,4,5,6) )
+list3 = ["a"] * 3 -> ["a", "a", "a"]
+list4 = list( range(10) )
 
-# def func(poz, s default, *.**). args - tuple, kwargs - dict.
-# func(poz, neobyaz arg, param = znach, klyuch = znach)
-# def func(a, b, c, * args)
+range(start, end, step) - генерирует последовательность чисел
 
-    # '''Vstroennye funkcii'''
-# map(int; ["1", "2"])
-# Syntax:
-# list_ = ["1", "2", "3", "4", "5"]
-# print([int(x) for x in list_])
-# print(list(map(int, list_)))
+len(seq) - возвращает длину последовательности (кол-во элементов)
+len( ["hello"] ) -> 1
+len( "hello" ) -> 5
+```
 
-# def my_func(elem):
-#     return elem.upper()
-# map(my_func, ["hello", "world"])
 
-# '''filter''' - funkciya, kotoraya vozvrawaet posledovatelnost iz elementov, sootvetstvuyushih usloviyu. priimaet 2 args: 1 - funkciya, kotoraya vozvr bulevoe znachenie i prinimaet 1 arg, 2 - posled
-# Syntax:
-# def myfunc(elem):
-#     return elem.isalpha()
+## Tuple
+> кортеж - неизменяемый список
+```py
+1,2,3,4 == (1,2,3,4)
+a = (3) -> int
+b = (3,) -> tuple
+c = 3, -> tuple
+d = 1,2,3 -> tuple
+```
 
-# print(list(filter(myfunc, ['1', '2', '3', 'd', 't'])))
 
-# def myfunc(elem):
-#     if elem>0:
-#         return True
+## Set
+> множество - изменяемый, неупорядоченный тип данных, который хранит в себе только уникальные неизменяемый значения
+
+Синтаксис:
+```py
+{1,2,3,4,5}
+set(iterable)
+```
+
+## Frozenset
+> неизменяемое множество
+
+Синтаксиc:
+```py
+frozenset(iterable)
+```
+
+
+## Dict
+> словарь - изменяемый, неупорядоченный тип данных, в котором хранятся пары в виде ключ - значение.
+> Ключ в словаре - любой неизменяемый тип данных. Каждый ключ - уникальный
+> Значение в словаре - любой тип данных.
+> Ключ от значения отделяется двоеточием.
+> Пары отделяются запятыми.
+
+Синтаксиc:
+```py
+{"key" : "value", 5:["hello"]}
+dict(iterable)
+dict( [("key1", "value1"), ("key2", "value2")] )
+```
+
+## None
+> None - неизменяемый тип данных, который используется для обозначения пустого значения или отсутствия значения
+
+
+
+# Loops
+> цикл - блок кода, который будет выполнятся несколько раз. 
+> Каждый круг цикла называется итерацией.
+
+> break - инструкция, которая немедлено прерывает работу цикла
+
+> continue - инструкция, которая немедлено переходит к следующей итерации 
+
+
+## For
+> for - цикл, который производит итерации над последовательностью (list, dict, set, str, tuple)
+> в цикле for мы можем выполнять различные операции над каждым элементом последовательности
+
+Синтаксиc:
+for элемент in последовательность:
+    какие-то действия
+
+## While
+> while - цикл, который производит какие-то действия пока условие будет True
+
+Синтаксиc:
+while условие:
+    какие-то действия
+
+
+
+# Conditions
+> условия - оператор, который позволяет нам выполнять или не выполнять какой-то кусочек кода, который находится в теле условия.
+
+Синтаксиc:
+if условие:
+    тело
+
+if True:
+    print("Условие верное")
+
+> Также мы можем создавать конструкции из условных операторов.
+
+if условие:
+    тело1
+elif условие:
+    тело2
+else:
+    тело3
+
+* если первое if условие выдало True, то выполнится 'тело1'
+* если первое if условие выдало False, то проверяется второе условие elif
+* если второе elif условие выдало True, то выполнится 'тело2' 
+* если второе elif условие выдало False, то выполняется 'тело3'
+
+
+> if и else в конструкции может быть использовано только 1 раз, elif может быть много
+
+## Тернарные условия
+> тернарное условие - условие написанные в одну строку, которое возвращает одно из двух результатов в зависимости от условия
+
+```py
+тело1 if условие else тело2
+a = "Hello" if False else "Bye" 
+a == "Bye"
+```
+
+
+
+
+# Comprehensions
+> генератор последовательности
+
+Синтаксис:
+действие for элемент in последовательность [if условие]
+
+
+## базовые comprehensions
+```py
+list_ = [1,2,3,4,5]
+
+a = (x for x in list_) -> генератор
+list_copy = list(a) -> список
+
+a = ((x, x**2) for x in list_) -> генератор
+dict_ = dict(a) -> словарь
+```
+
+## по новому формату
+```py
+[x for x in list_] -> список
+{x : x**2 for x in list_} -> словарь
+```
+
+
+## comprehensions с фильтрами
+```py
+[x for x in list_ if not x%2]
+# res = []
+# for x in list_:
+#     if not x%2:
+#         res.append(x)
+```
+
+
+## comprehensions с тернарными условиями
+```py
+["не четное" if x%2 else "четное" for x in list_]
+# res = []
+# for x in list_:
+#     if x%2:
+#         res.append("не четное")
 #     else:
-#         return False
-# filter(myfunc, [-1, 4, -6, 0, 8, 30, -2])
+#         res.append("четное")
+```
 
 
-# zip - eto funkciya, kotoraya ob'edinyaet elementy iz neskolkih posledovatelnostei po indexam v tuple, t.e. vse elementy pod indexom 0 v pervyi tuple,
-# vse elementy pod indexom 1 vo vtoroi tuple
 
-# list1 = [1, 2, 3, 4, 5]
-# list2 = ["a", "b", "c", "d"]
-# print(list(zip(list1, list2)))
+# Try-except
+> try-except - конструкция, для обработки исключений и ошибок. Синтаксические ошибки мы не можем обработать
 
-
-# reduce - funkciya, kotoruyu nujno importirovat' iz biblioteki functools: from functools import reduce. Ona prinimaet 2 obekta:1. funckiya, kototaya prinimaet 2 args i 2.posledovatelnost
-# funkciya reduce beret iz posledovatelnosti 2 elementa, otpravlyaet ih v funckiyu. Rezultat i sled element iz posledovatelnosti snova otpravlyaet v funkciyu i t.d.
-
-# Syntax:
-# from functools import reduce
-
-# def myfunc(x,y):
-#     return x if len(x)>= len(y) else y
-
-# reduce(myfunc, ["Hello", "world", "ochen dlinnaya stroka", "MAkers"])
+Синтаксиc:
+```py
+try:
+    код, который может вызвать ошибку
+except Исключение:
+    код, который работает, если ошибка вышла
+else:
+    код, который работает, если ошибка не вышла
+finally:
+    код, который работает в любом случае (даже когда код сломался)
+```
 
 
-# """Lambda""" - anonimnaya funkciya
-# Syntax:
-# lambda peremennaya: deistvie
-# my_func = lambda x:x**2
-# print(my_func(5))
-
-# import functools 
-# list_ = [1, 2, 3, 4]  
-# result = functools.reduce(lambda x, y: x+y, list_)
-# print(result)
 
 
+
+
+# Functions
+> функция - именованный блок кода, выполняющий какие-то действия  и возвращающий какой-то результат.
+> Мы можем вызывать функцию, обращаясь к ней по имени и используя круглые скобочки.
+> код, который написан внутри функции будет работать только при вызове функции
+> функции могут принимать данные
+
+* "параметры функции" - локальные переменные, которым присваются значения при вызове функции
+
+* "аргументы функции" - конкретные значения, которые мы передаем в параметры функции
+
+* "def" - инструкция, с помощью которой определяется функция
+
+* "return" - инструкция, с помощью которой функция возвращает результат, если ее не прописать (по дефолту возвращается значение None)
+
+## Types of arguments
+* позиционные аргументы
+* именованные аргументы
+* параметры с дефолтом
+* необязательные аргументы (*)
+* ключевые аргументы (**)
+
+```py
+def func(позиционные, с_дефолтом, *args, **kwargs):
+    args - tuple
+    kwargs - dict 
+
+func(позиционные, необязательные_аргументы, ключ=значение)
+```
+
+
+## Lambda
+> lambda - анонимная функция
+
+Синтаксис:
+```py
+# lambda параметры: возвращаемый результат или действие
+
+myfunc = lambda x, y: (x**2, y**2)
+print(myfunc(5, 6))
+```
+
+
+
+
+# Встроенные функции
+
+## map
+> map - функция, которая выполняет действия над каждым элементом последовательности 
+> и возвращает генератор новой последовательности
+она принимает 2 аргумента:
+1. функция, которая принимает 1 аргумент
+2. последовательность
+
+Синтаксиc:
+```py
+res = map(int, ["1", "2", "3"])
+# int("1") -> 1
+# int("2") -> 2
+# int("3") -> 3
+res = list(res)
+res == [1, 2, 3]
+
+
+def myfunc(elem):
+    return elem.upper()
+
+res = map(myfunc, ["hello", "world"])
+# myfunc("hello") -> "HELLO"
+# myfunc("world") -> "WORLD"
+res = list(res)
+res == ["HELLO", "WORLD"]
+```
+
+## filter
+> filter - функция, которая возвращает последовательность из элементов, соответствующих условию
+она принимает 2 аргумента:
+1. функция, которая принимает 1 аргумент, которая возвращает булевое значение (если True, то добавляется)
+2. последовательность
+
+Синтаксиc:
+```py
+def myfunc(elem):
+    return elem.isalpha()
+
+res = list(  filter(myfunc, ["1", "d", 't'])  )
+# myfunc("1") -> False
+# myfunc("d") -> True
+# myfunc("t") -> True
+res == ["d", "t"]
+
+def myfunc(elem):
+    return elem > 0
+
+
+res = list(  filter(myfunc, [-1, 4, 0, 8, 30, -2])   )
+# myfunc(-1) -> False
+# myfunc(4) -> True
+# myfunc(0) -> False
+# myfunc(8) -> True
+res == [4, 8, 30]
+
+res = list(  filter(lambda elem: elem > 0, [-1, 4, 0, 8, 30, -2])  )
+res == [4, 8, 30]
+
+
+res = list(  map(myfunc, [-1, 4, -6, 0, 8, 30, -2])  )
+# myfunc(-1) -> False
+# myfunc(4) -> True
+res == [False, True, False, False, True, True, False]
+```
+
+
+## Zip
+> zip - функция, которая обьединяет элементы из нескольких последовательностей по индексам в tuple, 
+> т.е все элементы под индексом 0 в первый tuple, все элементы под индексом 1 во второй tuple и т.д
+
+```py
+list1 = [[1], [2], [3], [4], [5]] # 5
+list2 = ["a", "b", "c", "d"] # 4
+list3 = [1.0, 2.0, 3.0] # 3
+res = list(  zip(list1, list2, list3)  )
+res == [([1], 'a', 1.0), ([2], 'b', 2.0), ([3], 'c', 3.0)]
+```
+
+
+## Reduce
+> reduce - функция, которую надо импортировать из библеотеки functools 
+`from functools import reduce`
+она принимает 2 аргумента:
+1. функция, которая принимает 2 аргумента
+2. последовательность
+> функция reduce берет из последовательности 2 элемента, отправляет их в функцию. 
+> результат и следующий элемент из последовательности снова отправляет в функцию и т.д
+
+Синтаксиc:
+```py
+from functools import reduce
+
+def myfunc(x, y):
+    return x if len(x) >= len(y) else y
+
+res= reduce(myfunc, ["hello", "world", "makers"])
+res == "makers"
+
+res = reduce(lambda x,y: x if len(x) >= len(y) else y, ["hello", "world", "makers"])
+res == "makers"
+```
